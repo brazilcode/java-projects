@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:dt="http://github.com/dandelion/datatables">
+
+<head th:replace="fragments/headTag :: headTag">
+</head>
+
+<body>
+	<div th:include="fragments/bodyHeaderCms :: bodyHeader" th:remove="tag"></div>
+
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<h2 class="page-header">Alertas</h2>
+
+		<div class="panel-group" id="accordion">
+			<!-- <div class="panel panel-default">
+				<div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><b>Pesquisa Avançada</b></a>
+					</h4>
+				</div>
+				<div id="collapseOne" class="panel-collapse collapse">
+					<div class="panel-body">
+						<div th:include="alertas/findAlertas :: findForm" th:remove="tag"></div>
+					</div>
+				</div>
+			</div>
+			<hr/> -->
+			<div class="table-responsive">
+				<table id="alertaTable" dt:table="true" class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th>Título</th>
+							<th>Data Início</th>
+							<th>Data Fim</th>
+							<th dt:filterable="false" dt:sortable="false">Ações</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="alerta : ${alertas}">
+							<td th:text="${alerta.titulo}"></td>
+							<td th:text="${#dates.format(alerta.dataInicio,'dd/MM/yyyy')}"></td>
+							<td th:text="${#dates.format(alerta.DataFim,'dd/MM/yyyy')}"></td>
+							<td>
+							<a href="#" th:href="@{|/alertas/${alerta.id}|}"><span class="glyphicon glyphicon-search"></span></a>
+							<a href="#" th:href="@{|/alertas/${alerta.id}/editar|}"><span class="glyphicon glyphicon-pencil"></span></a>
+							<a href="#" th:href="@{|/alertas/${alerta.id}/remover|}"><span class="glyphicon glyphicon-remove"></span></a>
+							<a href="#" data-toggle="modal" data-target="#myModal">Modal</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<!-- Modal -->
+		<div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1"
+			role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">Confirmação de Exclusão</h4>
+					</div>
+					<div class="modal-body">Deseja realmente excluir este registro?</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+						<button type="button" class="btn btn-primary">Sim</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<hr />
+		<div class="text-left">
+			<a href="#" th:href="@{/alertas/procurar}" class="btn btn-default">Nova Consulta</a>
+			<!-- <a href="novaTarefa" th:href="@{/alertas/novo}"
+				class="btn btn-default">Novo</a> -->
+		</div>
+	</div>
+
+	<div th:include="fragments/bodyFooter :: bodyFooter" th:remove="tag"></div>
+	
+	<script
+		src="/resources/js/alerta.js" th:src="@{/resources/js/alerta.js}"></script>
+</body>
+</html>

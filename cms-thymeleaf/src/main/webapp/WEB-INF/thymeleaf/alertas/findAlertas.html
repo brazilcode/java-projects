@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/headTag :: headTag">
+</head>
+
+<body>
+	<div th:include="fragments/bodyHeaderCms :: bodyHeader" th:remove="tag"></div>
+
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<h2 class="page-header">Procurar Alertas</h2>
+
+		<div th:fragment="findForm">
+			
+			<form th:object="${alerta}" action="alertasList.html"
+				th:action="@{/alertas}" method="get" id="search-alerta-form">
+				<div class="form-group">
+					<label for="nomeIpt">Título</label> 
+					<input id="nomeIpt" type="text" class="form-control" th:field="*{titulo}" /> 
+					<span class="help-block">Título do alerta</span>
+				</div>
+				<div class="row">
+					<div class="col-xs-6 col-sm-4 col-md-4">
+						<label for="dataInicioIpt">Data Início</label>
+						<input id="dataInicioIpt" type="text" class="form-control" th:field="*{dataInicio}" />
+						<span class="help-block">Data de Início do alerta</span>
+						<span class="text-warning" th:errors="*{dataInicio}">[error]</span>
+					</div>
+					<div class="col-xs-6 col-sm-4 col-md-4">
+						<label for="dataFimIpt">Data Fim</label>
+						<input id="dataFimIpt" type="text" class="form-control" th:field="*{dataFim}" />
+						<span class="help-block">Data Fim do alerta</span>
+						<span class="text-warning" th:errors="*{dataFim}">[error]</span>
+					</div>
+				</div>
+				<hr />
+				<div class="form-actions">
+					<button class="btn btn-primary" type="submit"
+						onclick="$('#demo').collapse('toggle')">Consultar</button>
+					<a href="novaTarefa" th:href="@{/alertas/novo}" class="btn btn-default">Novo</a>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div th:include="fragments/bodyFooter :: bodyFooter" th:remove="tag"></div>
+	
+	<script
+		src="/resources/js/alerta.js" th:src="@{/resources/js/alerta.js}"></script>
+</body>
+
+</html>

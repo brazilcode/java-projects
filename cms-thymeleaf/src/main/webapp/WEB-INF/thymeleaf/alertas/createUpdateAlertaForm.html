@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/headTag :: headTag">
+</head>
+
+<body>
+	<div th:include="fragments/bodyHeaderCms :: bodyHeader" th:remove="tag"></div>
+
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<h2 class="page-header"> <span th:text="${alerta['new']} ? 'Novo' : 'Atualizar'"></span> Alerta</h2>
+
+		<form th:object="${alerta}" th:method="${alerta['new']} ? post : put"
+			action="./alertaDetails.html"
+			th:action="@{${#httpServletRequest.servletPath}}"
+			id="add-alerta-form">
+
+			<p class="alert alert-warning" th:if="${#fields.hasErrors('all')}" th:errors="*{all}"></p>
+
+			<div class="form-group">
+				<label for="tituloIpt">Título</label> 
+				<input id="tituloIpt" type="text" class="form-control" th:field="*{titulo}"/>
+				<span class="help-block">Título do alerta</span>
+				
+			</div>
+			<div class="form-group">
+				<label for="conteudoTxt">Conteúdo</label>
+				<textarea id="conteudoTxt" rows="3" class="form-control" th:field="*{conteudo}"></textarea>
+				<span class="help-block">Conteúdo do alerta</span>
+				<!-- <span class="text-warning" th:errors="*{conteudo}">[error]</span> -->
+			</div>
+			<div class="row">
+				<div class="col-xs-6 col-sm-4 col-md-4">
+					<label for="dataInicioIpt">Data Início</label>
+					<input id="dataInicioIpt" type="text" class="form-control" th:field="*{dataInicio}"/>
+					<span class="help-block">Data de Início do alerta</span>
+					<!-- <span class="text-warning" th:errors="*{dataInicio}">[error]</span> -->
+				</div>
+				<div class="col-xs-6 col-sm-4 col-md-4">
+					<label for="dataFimIpt">Data Fim</label>
+					<input id="dataFimIpt" type="text" class="form-control" th:field="*{dataFim}"/>
+					<span class="help-block">Data Fim do alerta</span>
+					<!-- <span class="text-warning" th:errors="*{dataFim}">[error]</span> -->
+				</div>
+			</div>
+			<hr/>
+			<div class="text-left">
+				<a href="#" th:href="@{/alertas}" class="btn btn-default">Voltar</a>
+				<button th:if="${alerta['new']}" class="btn btn-primary" type="submit">Salvar</button>
+				<button th:unless="${alerta['new']}" class="btn btn-primary" type="submit">Atualizar</button>
+				<a href="#" th:href="@{/alertas/aprovar}" class="btn btn-primary">Enviar para Aprovação</a>
+			</div>
+		</form>
+	</div>
+
+	<div th:include="fragments/bodyFooter :: bodyFooter" th:remove="tag"></div>
+	
+	<script
+		src="/resources/js/alerta.js" th:src="@{/resources/js/alerta.js}"></script>
+</body>
+
+</html>

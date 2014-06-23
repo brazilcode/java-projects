@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+</head>
+
+<body>
+	<div th:fragment="bodyHeader">
+
+		<div th:include="fragments/mainMenu :: mainMenu" th:remove="tag"></div>
+	
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-3 col-md-2 sidebar">
+					<ul class="nav nav-sidebar">
+						<li><a href="#" th:href="@{/cms}"><i class="icon-home"></i>Início</a></li>
+						<li><a href="#" th:href="@{/alertas/procurar}"><i class="icon-search"></i>Alertas</a></li>
+						<li><a href="#">Campanhas</a></li>
+						<li><a href="#">Carrossel</a></li>
+						<li><a href="#">Comunidade</a></li>
+						<li><a href="#">Favoritos</a></li>
+						<li class="dropdown">
+			                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+			                <ul class="dropdown-menu">
+			                  <li><a href="#">Action</a></li>
+			                  <li><a href="#">Another action</a></li>
+			                  <li><a href="#">Something else here</a></li>
+			                  <li class="divider"></li>
+			                  <li class="dropdown-header">Nav header</li>
+			                  <li><a href="#">Separated link</a></li>
+			                  <li><a href="#">One more separated link</a></li>
+			                </ul>
+		              	</li>
+						<li><a href="evento_gestor.html">Gestor</a></li>
+						<li><a href="mensagens.html">Mensagens</a></li>
+						<li><a href="#">Páginas</a></li>
+						<li><a href="#">Perfis</a></li>
+						<li><a href="#">Usuários</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

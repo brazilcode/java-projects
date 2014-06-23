@@ -1,0 +1,125 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<meta name="description" content=""/>
+	<meta name="author" content=""/>
+	<!-- <link rel="shortcut icon" href="../../assets/ico/favicon.ico" /> -->
+    
+    <title>CMS CAIXA</title>
+
+	<link href="../resources/dist/css/jquery-ui-1.10.4.custom.css"
+          th:href="@{/resources/dist/css/jquery-ui-1.10.4.custom.css}" rel="stylesheet" />
+
+    <link href="../resources/dist/css/bootstrap.min.css"
+          th:href="@{/resources/dist/css/bootstrap.min.css}" rel="stylesheet" />
+    
+    <link href="../resources/css/cms.css"
+          th:href="@{/resources/css/cms.css}" rel="stylesheet" />
+    
+    
+	<!-- Just for debugging purposes. Don't actually copy this line! -->
+	<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+	
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+</head>
+<body>
+
+	<div th:fragment="mainMenu">
+		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<!-- <img th:src="@{/resources/images/logo.png}" src="../../resources/images/logo.png" style="max-width: 100%;height: auto;"/> -->
+					<a class="navbar-brand" href="../welcome.html" th:href="@{/}">Portal
+						Banking Caixa</a>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-left">
+						<li><a href="../home/homeCms.html" th:href="@{/cms}"><i
+								class="icon-home"></i>CMS</a></li>
+						<li><a href="../home/homeMonitoracao.html"
+							th:href="@{/monitoracao}"><i class="icon-home"></i>Monitoração</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#">Perfil</a></li>
+						<li><a href="#">Ajuda</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				<ul class="nav nav-sidebar">
+					<li><a href="#" th:href="@{/cms}"><i class="icon-home"></i>Início</a></li>
+					<li><a href="#" th:href="@{/alertas/procurar}"><i class="icon-search"></i>Alertas</a></li>
+					<li><a href="#">Campanhas</a></li>
+					<li><a href="#">Carrossel</a></li>
+					<li><a href="#">Comunidade</a></li>
+					<li><a href="#">Favoritos</a></li>
+					<li class="dropdown">
+		                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+		                <ul class="dropdown-menu">
+		                  <li><a href="#">Action</a></li>
+		                  <li><a href="#">Another action</a></li>
+		                  <li><a href="#">Something else here</a></li>
+		                  <li class="divider"></li>
+		                  <li class="dropdown-header">Nav header</li>
+		                  <li><a href="#">Separated link</a></li>
+		                  <li><a href="#">One more separated link</a></li>
+		                </ul>
+	              	</li>
+					<li><a href="evento_gestor.html">Gestor</a></li>
+					<li><a href="mensagens.html">Mensagens</a></li>
+					<li><a href="#">Páginas</a></li>
+					<li><a href="#">Perfis</a></li>
+					<li><a href="#">Usuários</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<h2 class="page-header">Testes</h2>
+		<p>Session value: <span th:text="${session.sessionValue}">No Value</span></p>
+		<p>Locale country:<span th:text="${#locale.country}">US</span></p>
+		<p>Today is: <span th:text="${#calendars.format(today,'dd MMMM yyyy')}">Empty</span></p>
+		<p>Is Empty String: <span th:text="${#strings.isEmpty(contextValue)}">True</span></p>
+		<p>Upper Case String: <span th:text="${#strings.toUpperCase('javabeat')} ">None</span></p>
+		<p>List Size: <span th:text="${#lists.size(listExample)}">0</span></p>
+		<p>Set Size: <span th:text="${#sets.size(setExample)}">0</span></p>
+		<p>Format Number: <span th:text="${#numbers.formatInteger(100000,3,'POINT')}">0</span></p>
+	</div>
+	
+	<!-- Bootstrap core JavaScript
+	    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+
+	<script src="../resources/dist/js/jquery-1.11.1.js"
+		th:src="@{/resources/dist/js/jquery-1.11.1.js}"></script>
+
+	<script src="../resources/dist/js/jquery-ui-1.10.4.custom.js"
+		th:src="@{/resources/dist/js/jquery-ui-1.10.4.custom.js}"></script>
+
+	<script src="../resources/dist/js/bootstrap.min.js"
+		th:src="@{/resources/dist/js/bootstrap-3.1.1.min.js}"></script>
+</body>
+</html>

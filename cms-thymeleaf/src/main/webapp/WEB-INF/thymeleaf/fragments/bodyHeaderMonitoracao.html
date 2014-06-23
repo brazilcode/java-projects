@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+</head>
+
+<body>
+	<div th:fragment="bodyHeader">
+
+		<div th:include="fragments/mainMenu :: mainMenu" th:remove="tag"></div>
+	
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-3 col-md-2 sidebar">
+					<ul class="nav nav-sidebar">
+						<li><a href="../home/homeMonitoracao.html"
+							th:href="@{/monitoracao}"><i class="icon-home"></i>Início</a></li>
+						<li><a href="../owners/findOwners.html"
+							th:href="@{/owners/find.html}"><i class="icon-search"></i>Find
+								owners</a></li>
+						<li><a href="../vets/vetList.html" th:href="@{/vets.html}"><i
+								class="icon-th-list"></i>Veterinarians</a></li>
+						<li><a href="../exception.html" th:href="@{/oups.html}"
+							title="trigger a RuntimeException to see how it is handled"><i
+								class="icon-warning-sign"></i>Error</a></li>
+						<li><a href="#" title="not available yet. Work in progress!!"><i
+								class=" icon-question-sign"></i>Help</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
